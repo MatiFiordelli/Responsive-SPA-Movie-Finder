@@ -1,0 +1,41 @@
+@import url("./SearchContainer");
+@import url("./HomeButton");
+@import url("./TopOfPageButton");
+@import url("./LanguageButton");
+@import url("./Genres");
+
+.header{
+    align-items: center;
+    background-color: rgba(0,0,0,1);
+    display: grid;
+    grid-auto-flow: column;
+    justify-content:space-between;
+    opacity: 0.2;
+    overflow: hidden;
+    position: fixed;
+    transition: 1000ms ease !important;
+    user-select: none;
+    width: 100vw;
+    height: 40px;
+    z-index: 300;
+    animation: autoHideHeader 2000ms ease-in;    
+
+    .header__right-section{
+        display: flex;
+        padding: 0 15px;
+    }
+}
+
+.header:hover{
+    opacity:1 !important;
+    animation-duration: 0ms;
+}
+
+@keyframes autoHideHeader {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity:0.2;
+    }
+}

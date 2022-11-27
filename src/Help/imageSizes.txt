@@ -1,0 +1,42 @@
+See here: https://api.themoviedb.org/3/configuration?api_key=4d1a073d6e646d93ce0400ffa3b8d13e
+
+images  
+base_url    "http://image.tmdb.org/t/p/"
+secure_base_url "https://image.tmdb.org/t/p/"
+backdrop_sizes  
+0   "w300"
+1   "w780"
+2   "w1280"
+3   "original"
+logo_sizes  
+0   "w45"
+1   "w92"
+2   "w154"
+3   "w185"
+4   "w300"
+5   "w500"
+6   "original"
+poster_sizes    
+0   "w92"
+1   "w154"
+2   "w185"
+3   "w342"
+4   "w500"
+5   "w780"
+6   "original"
+profile_sizes   
+0   "w45"
+1   "w185"
+2   "h632"
+3   "original"
+still_sizes 
+0   "w92"
+1   "w185"
+2   "w300"
+3   "original"
+
+//https://api.themoviedb.org/3/tv/{tv_id}?api_key=<<api_key>>&language=en-US
+//https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
+//https://api.themoviedb.org/3/search/company?api_key=<<api_key>>&page=1
+//https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+//https://api.themoviedb.org/3/search/tv?api_key=<<api_key>>&language=en-US&page=1&include_adult=false

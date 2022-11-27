@@ -1,0 +1,57 @@
+.slider-inner__item-image {
+  text-align: center;
+  width: -webkit-fill-available;
+  width: 130px;
+}
+
+.slider-inner__item-title {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  word-break: keep-all;
+}
+
+.slider-inner__item-subtitle1 {
+  color: #cccccc;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.slider-inner__item-subtitle2 {
+  color: #bbbbbb;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.img-person-not-found {
+  width: 200px;
+  height: 300px;
+  background-color: lightslategrey;
+}
+
+@media only screen and (min-width: 1501px) {
+  .slider-inner__item-image, .img-person-not-found {
+    width: 200px;
+    height: 300px;
+  }
+}
+@media only screen and (max-width: 1500px) {
+  .slider-inner__item-image, .img-person-not-found {
+    width: 130px;
+    height: 195px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .slider-inner__item-image, .img-person-not-found {
+    width: 100px;
+    height: 150px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .slider-inner__item-image, .img-person-not-found {
+    width: 85px;
+    height: 127.5px;
+  }
+}/*# sourceMappingURL=HorizontalSliderContent.css.map */

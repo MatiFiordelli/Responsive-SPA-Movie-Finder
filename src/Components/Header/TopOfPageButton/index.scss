@@ -1,0 +1,59 @@
+@use "../../../Styles/Modules/modules";
+
+.top-of-page-button-container{
+    @extend %button-header;
+
+    display: table;
+
+    .top-of-page-button-container__button{
+        background-color: transparent;
+        color: #FFF;
+        display: table-cell;
+        font-family: sans-serif, Arial, Helvetica;
+        font-size: 10px;
+        font-variant-caps: all-petite-caps;
+        font-weight: 600;
+        padding-bottom: 1px;
+        position:relative;
+        text-align: center;        
+        vertical-align: middle;
+        animation:changeColorSliding2 1000ms linear ;
+    }
+
+    .top-of-page-button-container__button:hover::before{
+        border-right:1px solid white;
+        color:rgb(230, 182, 60);
+        content: attr(data-text);
+        overflow: hidden;
+        position:absolute;
+        width:100%;
+        white-space:nowrap;
+        animation:changeColorSliding 1000ms linear;
+    }
+    
+    .top-of-page-button-container__button:hover:active, 
+    .top-of-page-button-container__button:hover:active::before{
+        color:rgba(255,255,255,0.6);
+        text-shadow: 1px 1px 11px #FFF;
+    }
+}
+
+.top-of-page-button-container:hover{
+    border: 1px solid rgba(255,255,255,0.6);
+}
+@keyframes changeColorSliding{
+    0%{
+        width:0%;
+    }
+    to{
+        width:100%;
+    }
+}
+@keyframes changeColorSliding2{
+    0%{
+        opacity:0%;
+    }
+    to{
+        opacity:1;
+    }
+}

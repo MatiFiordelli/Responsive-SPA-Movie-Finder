@@ -1,0 +1,5 @@
+{
+    "editor.suggest.showReferences": true,
+    "editor.suggest.showKeywords": true,
+    "editor.suggest.showEnumMembers": true
+}

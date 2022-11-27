@@ -1,0 +1,53 @@
+@import url("./SearchContainer");
+@import url("./HomeButton");
+@import url("./TopOfPageButton");
+@import url("./LanguageButton");
+@import url("./Genres");
+.header {
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  opacity: 0.2;
+  overflow: hidden;
+  position: fixed;
+  transition: 1000ms ease !important;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 100vw;
+  height: 40px;
+  z-index: 300;
+  -webkit-animation: autoHideHeader 2000ms ease-in;
+          animation: autoHideHeader 2000ms ease-in;
+}
+.header .header__right-section {
+  display: flex;
+  padding: 0 15px;
+}
+
+.header:hover {
+  opacity: 1 !important;
+  -webkit-animation-duration: 0ms;
+          animation-duration: 0ms;
+}
+
+@-webkit-keyframes autoHideHeader {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.2;
+  }
+}
+
+@keyframes autoHideHeader {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.2;
+  }
+}/*# sourceMappingURL=index.css.map */

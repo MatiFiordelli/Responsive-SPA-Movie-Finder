@@ -1,0 +1,95 @@
+.backdrop-image-slider-container{
+    margin:0;
+    overflow: hidden;
+    padding:0;
+
+    .backdrop-image-slider-navigation{
+        display:grid;
+        grid-auto-flow: column;
+        justify-content: center;
+        opacity:0.4;
+        overflow: hidden;
+        position:relative;
+        top:10px;
+        left:0;
+        z-index:100;
+
+        .backdrop-image-slider-navigation__item{
+            background-color:#FFF; 
+            border: 0.7px solid rgba(0,0,0,0.5);
+            border-radius:35%; 
+            margin:0 1px;
+            transition: 1600ms cubic-bezier(0.39, 0.01, 0.04, 1);
+            width:3px; 
+            height:3px;
+            z-index:110;
+        }
+
+        .backdrop-image-slider-navigation__item:first-child{
+            background-color: #F00;
+        }
+    }
+
+    .backdrop-image-slider{
+        display: grid;
+        grid-auto-flow: column;
+        overflow: hidden;
+        position: relative;
+        transition: 1600ms cubic-bezier(0.39, 0.01, 0.04, 1);
+        user-select: none;    
+        width: fit-content;
+        height:auto;
+
+        .backdrop-image-slider-item{
+            background-attachment:scroll;
+            background-position: right top;
+            background-repeat: no-repeat;
+            background-size:150vw; 
+            cursor:grab;
+            max-height: 500px;
+            min-height: 200px;
+            overflow: hidden;
+            position: relative;
+            left: 0;
+            top:0;
+            transition: 1600ms cubic-bezier(0.39, 0.01, 0.04, 1);
+            width: 100vw;
+            height: 500px;
+        }
+
+        .backdrop-image-slider-item:first-child {
+            background-position: center top;
+        }
+    }
+}
+
+@mixin backdropItemsHeight($height, $minWidth, $maxWidth) {
+    $maxWithExpression: "none";
+    @if $maxWidth!=none {
+        $maxWithExpression: "only screen and (min-width: "+ $minWidth+") and (max-width: " + $maxWidth + ")"; 
+    } @else {
+        $maxWithExpression: "only screen and (min-width: "+ $minWidth+")";         
+    };
+    
+    @media #{$maxWithExpression} {
+        .backdrop-image-slider-container{
+            .backdrop-image-slider-navigation{
+                @if $minWidth==801px{
+                    display:grid;
+                } @else {
+                    display:none;
+                };
+            }
+
+            .backdrop-image-slider{
+                .backdrop-image-slider-item{
+                    height: $height;
+                }
+            }
+        }
+    }
+}
+
+@include backdropItemsHeight(500px, 801px, none);
+@include backdropItemsHeight(350px, 501px, 800px);
+@include backdropItemsHeight(200px, 0px, 500px);

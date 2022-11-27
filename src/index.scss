@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Montserrat:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+@import url("./Components/Header");
+@import url("./Pages/Home/Main");
+@import url("./Pages/SearchResultsList"); 
+@import url("./Styles/profiles.css");
+@import url("./Components/Slider/HorizontalSlider");
+@import url("./Components/Slider/HorizontalSlider/HorizontalSliderContent");
+@import url("./Components/EnlargeImage"); 
+@import url("./Components/Slider/BackdropImagesSlider");
+@import url("./Components/Spinner");
+@import url("./Components/Slider/StackSlider");
+
+
+* {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-font-smoothing: antialiased;
+	outline:none;
+	scroll-behavior: smooth;
+}
+
+body {
+	/*background-color:rgb(67, 62, 73);*/
+	background-color:rgb(51, 47, 57);
+	color:rgb(255, 255, 255);
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+	opacity: 0;
+	overflow-x:hidden;
+	overflow-y: auto;
+	text-shadow: 1px 1px 4px #000000;
+	width: 100vw;
+	animation: animateBody 1000ms ease forwards;
+
+	@keyframes animateBody {
+		0%{
+			opacity: 0;
+		}
+		100%{
+			opacity: 1;
+		}
+		
+	}
+}
+
+a:active
+a:focus,
+a:hover,
+a:link,
+a:visited {
+	color:inherit;
+}

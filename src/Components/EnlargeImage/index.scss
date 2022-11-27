@@ -1,0 +1,55 @@
+@use "../../Styles/Modules/modules";
+
+.big-image-overlay {
+    @extend %overlay;
+
+    .big-image-container{
+        position: relative;
+        top: 0%;
+        left: 0%;
+        transition: 500ms;
+
+
+        .big-image-container__item {
+            border: 1px solid gray;
+            box-shadow: 2px 2px 10px 2px lightgrey, -2px -2px 10px 2px lightgrey;
+            color: white;
+            cursor: zoom-out;
+            font-weight: bolder;
+            max-height: 90vh;
+            max-width: 90vw;
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .big-image-container__close{
+            @extend %overlay-close;
+            user-select: none;
+        }
+
+        .big-image-container__rotate-phone{
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+            cursor: pointer;
+            left:3px;
+            top:3px;
+            border-radius: 3px;
+            width: 18px;
+            height: 19px;
+            z-index:212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+
+            .rotate-phone{
+                fill:#FFF !important;
+                width: 18px;
+                height: 18px;
+                top:2px;
+                position: absolute;
+            }
+        }
+    }
+}

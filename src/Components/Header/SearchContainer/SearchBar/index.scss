@@ -1,0 +1,53 @@
+.search-bar{
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 1px;
+    overflow: hidden;
+    position: relative;
+	transition: top 1000ms;
+	width: 40vw;
+    height: stretch;
+    
+    .search-bar__input{
+        opacity: 0.9;
+		transition: 700ms;
+		width: 100%;
+        height: 100%;
+    }
+
+    .search-bar__clear{
+        color:rgba(0,0,0,0.5);
+        cursor:pointer;
+        position: absolute;
+        right: 5px;
+    }
+
+    .search-bar__clear:hover{
+        font-weight: 500;
+    }
+
+    .search-bar__clear:active{
+        font-weight: 700;
+    }
+}
+
+@mixin searchBarInputPlaceholder($height, $minWidth, $maxWidth) {
+    $maxWithExpression: 'none';
+    @if $maxWidth!=none {
+        $maxWithExpression: "only screen and (min-width: "+ $minWidth+") and (max-width: " + $maxWidth + ")"; 
+    } @else {
+        $maxWithExpression: "only screen and (min-width: "+ $minWidth+")";         
+    };
+    
+    @media #{$maxWithExpression} {
+        .search-bar__input::placeholder{
+            font-size:$height;
+        }
+    }
+}
+
+@include searchBarInputPlaceholder(14px, 801px, none);
+@include searchBarInputPlaceholder(12px, 601px, 800px);
+@include searchBarInputPlaceholder(10px, 401px, 600px);
+@include searchBarInputPlaceholder(8px, 0px, 400px);
