@@ -1,166 +1,57 @@
-html {
-	scroll-behavior: smooth;
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Montserrat:wght@400;500&family=Raleway:wght@300;400;500;600;700&display=swap");
+@import url("./Components/Header");
+@import url("./Pages/Home/Main");
+@import url("./Pages/SearchResultsList");
+@import url("./Styles/profiles.css");
+@import url("./Components/Slider/HorizontalSlider");
+@import url("./Components/Slider/HorizontalSlider/HorizontalSliderContent");
+@import url("./Components/EnlargeImage");
+@import url("./Components/Slider/BackdropImagesSlider");
+@import url("./Components/Spinner");
+@import url("./Components/Slider/StackSlider");
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+  scroll-behavior: smooth;
 }
 
 body {
-	background-color:rgb(67, 62, 73);
-	color:rgb(255, 255, 255);
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0 auto;
-	min-width: 200px;
-	max-width: 800px;
-	scroll-behavior: smooth;
-	overflow-y: scroll;
-	overflow-x:hidden;
-	opacity: 0;
+  /*background-color:rgb(67, 62, 73);*/
+  background-color: rgb(51, 47, 57);
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-shadow: 1px 1px 4px #000000;
+  width: 100vw;
+  -webkit-animation: animateBody 1000ms ease forwards;
+          animation: animateBody 1000ms ease forwards;
+}
+@-webkit-keyframes animateBody {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animateBody {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-#form {
-	position:sticky;
-	top:0;
-	display: grid;
-	grid-template-columns: 90% auto;
-	justify-content: space-around;
-	width: 100%;
-	padding:5px;
-	
-	overflow:hidden;
-	transition: top 500ms;
-}
-
-/* the input element */
-#search {
-	outline:none;
-	width: 80%;
-	opacity: 0.7;
-	transition: 700ms;
-}
-
-#search:hover {
-	opacity: 0.9;
-}
-
-#search:focus {
-	opacity:0.9;
-}
-
-/* the table used to display the results */
-#content {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-}
-
-#content td{
-	padding: 10px;
-}
-
-.infoCell {
-	display:grid;
-	grid-template-areas: "title average"
-						"date date"
-						"overview overview";
-	grid-template-columns: auto auto;
-	grid-template-rows: auto auto 1fr;
-}
-
-.posterM {
-	border-radius: 15px;
-	border: 1px solid black;
-	transition: 400ms;
-}
-
-.posterM:hover {
-	animation-duration: 300ms;
-	animation-name: posterAnim;
-	animation-iteration-count: infinite;
-	animation-direction: alternate-reverse;
-}
-
-@keyframes posterAnim {
-	from {
-		border: 1px solid lightgray;
-	}
-	to {
-		border: 1px solid white;
-	}
-}
-
-#bigPosterContainer {
-	position:fixed;
-	left:50%;
-	transform: translate(-50%);
-	width:100%;
-	height:100%;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	visibility: hidden;
-	background-color: transparent;
-	z-index:1;
-	overflow:hidden;
-}
-
-#bigPoster {
-	width:75%;
-	height:auto; 
-	min-width: 200px;
-	max-width: 400px; 
-	border: 1px solid gray;
-	box-shadow: 2px 2px 10px 2px lightgray, -2px -2px 10px 2px lightgray;
-	color:white;
-	background:red;
-	font-weight: bolder;
-}
-
-.titleM {
-	grid-area: title;
-	font-size: 20px;
-	padding-top: 15px;
-	padding-bottom: 5px;
-}
-
-.overviewM {
-	grid-area: overview;
-	font-size: 15px;
-	text-align: justify;
-	padding-top: 2px;
-}
-
-.dateM {
-	grid-area: date;
-	font-size: 12px;
-	color: lightgray;
-	padding-top: 2px;
-	padding-bottom: 30px;
-	justify-self:left;
-	align-self:middle;
-}
-
-.averageM {
-	grid-area: average;
-	font-weight: bold;
-	font-size: 15px;
-	color: lightgray;
-	padding-top: 15px;
-	padding-bottom: 5px;
-	justify-self: right;
-	align-self: start;
-}
-
-/* 'Top' button */
-.btn {
-	outline:none;
-	border-radius: 10px;
-	background-color: rgb(58, 57, 57);
-	color: white;
-	font-family:monospace;
-	font-weight: bold;
-	font-size: 10px;
-	opacity: 0.9;
-}
-
-.btn:hover {
-	background-color: rgb(105, 105, 105);
-	opacity: 1;
-}
+a:active a:focus,
+a:hover,
+a:link,
+a:visited {
+  color: inherit;
+}/*# sourceMappingURL=index.css.map */
