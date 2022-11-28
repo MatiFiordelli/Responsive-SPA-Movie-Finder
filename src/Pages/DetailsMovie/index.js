@@ -10,7 +10,7 @@ import {colorVoteAverage,
         getCrewMembers,
         getOriginalLanguage,
         getProductionCountry } from '../../Modules/usefulFunctions.js'
-import { fetchData } from '../../Modules/FetchData/fetchData'
+import { fetchData } from '../../Modules/FetchData/fetchData.js'
 import { fetchOriginalLanguage } from '../../Modules/FetchData/fetchOriginalLanguage.js'
 import { fetchProductionCountry } from '../../Modules/FetchData/fetchProductionCountry'
 import BackdropImagesSlider from '../../Components/Slider/BackdropImagesSlider'
