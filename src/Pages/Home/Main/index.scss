@@ -6,13 +6,14 @@
     width:100vw;
 
     .main-container__latest{
+        aspect-ratio: 16/9;
+        background-size: auto 78vw;
         background-attachment:fixed;
         background-clip: padding-box;
         background-position:center top;
         background-repeat: no-repeat;
         position: relative;
         user-select: none;
-        width: 100vw;
         animation: fadeinImage 5000ms ease forwards;
 
         .main-container__rained-text{
@@ -41,11 +42,14 @@
                     animation: animateRainingText 1200ms ease-in forwards;
                 }
 
-                .main-container__rained-text-word-letter:hover{
-                    pointer-events: all;
-                    opacity: 1;
-                    animation: animateRepelText 1200ms cubic-bezier(0, 0.5, 0.5, 1) backwards;
+                @media only screen and (hover:hover) and (pointer:fine) {
+                    .main-container__rained-text-word-letter:hover{
+                        pointer-events: none;
+                        opacity: 1;
+                        animation: animateRepelText 1200ms cubic-bezier(0, 0.5, 0.5, 1) backwards;
+                    }
                 }
+                
             }
         }
     }
@@ -111,9 +115,6 @@
 @media only screen and (max-width:400px){
     .main-container{
         .main-container__latest{
-            background-size: auto 125vw;
-            height: 30vh;
-
             .main-container__rained-text{
                 font-size: 1.5rem;
             }
@@ -128,9 +129,6 @@
 @media only screen and (min-width:401px) and (max-width:600px){
     .main-container{
         .main-container__latest{
-            background-size: 200vw;
-            height: 40vh;
-
             .main-container__rained-text{
                 font-size: 2.2rem;
             }
@@ -145,9 +143,6 @@
 @media only screen and (min-width:601px) and (max-width:800px){
     .main-container{
         .main-container__latest{
-            background-size: 210vw;
-            height: 50vh;
-
             .main-container__rained-text{
                 font-size: 2.3rem;
             }
@@ -162,8 +157,8 @@
 @media only screen and (min-width:801px) and (max-width:1400px){
     .main-container{
         .main-container__latest{
-            background-size:cover;
-            height: 70vh;
+            aspect-ratio: 16/6.8;
+            background-size: auto 60vw;
 
             .main-container__rained-text{
                 font-size: 3.5rem;
@@ -179,11 +174,11 @@
 @media only screen and (min-width:1401px) and (max-width:2000px){
     .main-container{
         .main-container__latest{
-            background-size: 140vw;
-            height: 75vh;
+            aspect-ratio: 16/7;
+            background-size: auto 62vw;
 
             .main-container__rained-text{
-                font-size: 4.5rem;
+                font-size: 4.4rem;
             }
         }
 
@@ -196,9 +191,8 @@
 @media only screen and (min-width:2001px){
     .main-container{
         .main-container__latest{
-            background-position: center top !important;
-            background-size: 100%;
-            height: 75vh;
+            aspect-ratio: 16/6.6;
+            background-size: auto 64vw;
 
             .main-container__rained-text{
                 font-size: 4.5rem;

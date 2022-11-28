@@ -230,6 +230,14 @@ export const slideBackdrop = (sliderContainer, slider, parallax, setPositionInde
     slider.addEventListener("touchstart", dragStart)
     slider.addEventListener("touchend", dragEnd)
     slider.addEventListener("touchmove", drag)
+    window.screen.orientation.addEventListener("change", ()=>{
+        sliderItemWidth = window.getComputedStyle(slider.children[0]).width.replace('px','')
+        slider.style.transform = "translateX(" + (-window.screen.width*index) + "px)"
+    })
+    window.addEventListener("resize",(e)=>{
+        sliderItemWidth = window.getComputedStyle(slider.children[0]).width.replace('px','')
+        slider.style.transform = "translateX(" + (-window.screen.width*index) + "px)"        
+    })
     //slider.addEventListener("transitionend", ()=>{slider.style.transition = 'initial'})
 
     function setInitialPos(e) {
