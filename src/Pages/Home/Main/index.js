@@ -98,7 +98,7 @@ export default function Main(){
         let currentScrollPos = window.scrollY
         let distancePixels
         let el = document.querySelector('.main-container__latest')
-console.log(el)
+
         //Controls if the scrollY is up or down
 		if(prevScrollPos < currentScrollPos){
             //scrolling down
