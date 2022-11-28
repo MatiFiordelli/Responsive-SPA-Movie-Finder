@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { sliderMouseDown, detectClickVsDrag, slide } from '../../../UsefulFunctions/usefulFunctions.js'
+import { sliderMouseDown, detectClickVsDrag, slide } from '../../../Modules/usefulFunctions.js'
 import HorizontalSliderContent from '../HorizontalSlider/HorizontalSliderContent'
 import { LanguageContext } from "../../../GlobalState/context.js"
 

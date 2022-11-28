@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { slideStack } from '../../../UsefulFunctions/usefulFunctions.js'
+import { slideStack } from '../../../Modules/usefulFunctions.js'
 
 export default function StackSlider({
                                     imagesPerMovie, 

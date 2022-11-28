@@ -1,8 +1,9 @@
 import React, {useState, useEffect, useRef, useCallback, useContext} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-import { colorVoteAverage } from '../../UsefulFunctions/usefulFunctions.js'
-import { LanguageContext } from '../../GlobalState/context.js' 
+import { colorVoteAverage } from '../../Modules/usefulFunctions.js'
+import { fetchData } from '../../Modules/FetchData/fetchData.js'
+import { LanguageContext } from '../../GlobalState/context.js'
 
 export default function SearchResultsList() {
     const signal = axios.CancelToken.source()
@@ -12,6 +13,8 @@ export default function SearchResultsList() {
 	const page = useRef(1)
 	const [searchResultItem, setSearchResultItem] = useState([])
 	const [data, setData] = useState()
+	let searchPhrase = ''
+	let paramsId = {}
 	sessionStorage.setItem('isSearching', true)
 
 	const setResultComponent = useCallback(() => {
@@ -68,21 +71,6 @@ export default function SearchResultsList() {
 
 	},[data, navigate, searchResultItem])
 	
-
-	const fetchSearch = () => {
-		let searchPhrase = params.terms.replaceAll(' ', '+')
-		let theUrl = `https://api.themoviedb.org/3/search/movie?api_key=4d1a073d6e646d93ce0400ffa3b8d13e&language=${languageCodeState}&page=${page.current}&query=${searchPhrase}&include_adult=false`
-		axios.get(theUrl, {cancelToken: signal.token})
-		.then((res) => {
-			setData(res.data)
-		})
-		.catch((e)=>{
-            if(axios.isCancel(e)){
-                console.log(e.message)
-            }
-        })
-	}
-
  	useEffect(()=>{
 		if(data !== undefined){
 			if (data.page !== undefined && data.page <= data.total_pages){
@@ -102,7 +90,10 @@ export default function SearchResultsList() {
 		setSearchResultItem([])
 		page.current = 1
 		if(params.terms!==undefined){
-			fetchSearch()
+			searchPhrase = params.terms.replaceAll(' ', '+')
+			paramsId = {page: page.current, searchPhrase: searchPhrase}
+			fetchData(12, setData, signal, languageCodeState, paramsId)
+
 			document.querySelector('.search-results').style.display = 'flex'
 		}else{
 			document.querySelector('.search-results').style.display = 'none'
@@ -129,7 +120,10 @@ export default function SearchResultsList() {
 		//Infinite scroll
 		if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight-5 ) {
 			page.current += 1
-			fetchSearch()
+			searchPhrase = params.terms.replaceAll(' ', '+')
+			paramsId = {page: page.current, searchPhrase: searchPhrase}
+			
+			fetchData(12, setData, signal, languageCodeState, paramsId)
 		}
 	}
 

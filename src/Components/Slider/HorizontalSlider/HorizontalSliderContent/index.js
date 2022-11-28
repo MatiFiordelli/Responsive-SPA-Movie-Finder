@@ -32,6 +32,12 @@ export default function HorizontalSliderContent({e, target, id}){
         }
     },[e])
 
+    useEffect(()=>{
+        return ()=>{
+            setObjEntries({})
+        }
+    },[])
+
     return(
         <>
             {objEntries!==undefined && objEntries.img!==null

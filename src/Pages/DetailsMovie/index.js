@@ -9,9 +9,10 @@ import {colorVoteAverage,
         asideVerticalMovement,
         getCrewMembers,
         getOriginalLanguage,
-        getProductionCountry } from '../../UsefulFunctions/usefulFunctions.js'
-import { fetchOriginalLanguage } from '../../Components/FetchData/fetchOriginalLanguage.js'
-import { fetchProductionCountry } from '../../Components/FetchData/fetchProductionCountry'
+        getProductionCountry } from '../../Modules/usefulFunctions.js'
+import { fetchData } from '../../Modules/FetchData/fetchData'
+import { fetchOriginalLanguage } from '../../Modules/FetchData/fetchOriginalLanguage.js'
+import { fetchProductionCountry } from '../../Modules/FetchData/fetchProductionCountry'
 import BackdropImagesSlider from '../../Components/Slider/BackdropImagesSlider'
 import ImageLoader from '../../Components/ImageLoader'
 import StackSlider from '../../Components/Slider/StackSlider'
@@ -20,7 +21,6 @@ import TitlesTranslator from '../../Components/TitlesTranslator'
 
 export default function DetailsMovie() {
     const signal = axios.CancelToken.source()
-    
     const [dataMovie, setDataMovie] = useState()
     const [dataMovieCredits, setDataMovieCredits] = useState()
     const [dataImagesPerMovie, setDataImagesPerMovie] = useState()
@@ -28,7 +28,7 @@ export default function DetailsMovie() {
     const [productionCountryList, setProductionCountryList] = useState()
     const [enlargedImageOrigin, setEnlargedImageOrigin] = useState()
     const [enlargedImageVisibility, setEnlargedImageVisibility] = useState('none')
-    const [stackSliderVisibility, setStackSliderVisibility] = useState('none')
+   // const [stackSliderVisibility, setStackSliderVisibility] = useState('none')
     const params = useParams()
     const { languageCodeState, setLanguageCodeState } = useContext(LanguageContext)
     const urlImg = "https://image.tmdb.org/t/p/w1280/"
@@ -38,55 +38,11 @@ export default function DetailsMovie() {
                         day:'2-digit'
                         }
 
-    const fetchMovie = () => {
-        let theUrl = `https://api.themoviedb.org/3/movie/${params.id}?api_key=4d1a073d6e646d93ce0400ffa3b8d13e&language=${languageCodeState}&include_adult=false`
-        axios.get(theUrl, {cancelToken: signal.token})
-        .then((res) => {
-            setDataMovie(res.data)
-        })
-        .catch((e)=>{
-            if(axios.isCancel(e)){
-                console.log(e.message)
-            }else{
-                console.log('ERROR:' + e)
-            }
-        })
-    }
-
-    const fetchMovieCredits = () => {
-        let theUrl = `https://api.themoviedb.org/3/movie/${params.id}/credits?api_key=4d1a073d6e646d93ce0400ffa3b8d13e&language=${languageCodeState}&include_adult=false`
-        axios.get(theUrl, {cancelToken: signal.token})
-        .then((res) => {
-            setDataMovieCredits(res.data)
-        })
-        .catch((e)=>{
-            if(axios.isCancel(e)){
-                console.log(e.message)
-            }else{
-                console.log('ERROR:' + e)
-            }
-        })
-    }
-
-    const fetchImagesPerMovie = () => {
-        let url = `https://api.themoviedb.org/3/movie/${params.id}/images?api_key=4d1a073d6e646d93ce0400ffa3b8d13e` //this endpoint does not return data if I use &language
-        axios.get(url, {cancelToken: signal.token})
-        .then((res)=>{
-            setDataImagesPerMovie(res.data)
-        })
-        .catch((e)=>{
-            if(axios.isCancel(e)){
-                console.log(e.message)
-            }else{
-                console.log('ERROR:' + e)
-            }
-        })
-    }
-
     const contentUseEffect = () => {
-        fetchMovie()
-        fetchMovieCredits()
-        fetchImagesPerMovie()
+        //urlId, setState, signal, languageCodeState, paramsId(movieID or personID)
+        fetchData(7, setDataMovie, signal, languageCodeState, params.id)
+        fetchData(8, setDataMovieCredits, signal, languageCodeState, params.id)
+        fetchData(9, setDataImagesPerMovie, signal, languageCodeState, params.id)
         
         fetchOriginalLanguage(setOriginalLanguageList)
         fetchProductionCountry(setProductionCountryList)
@@ -161,17 +117,7 @@ export default function DetailsMovie() {
                         enlargedImageVisibility={enlargedImageVisibility}
                         setEnlargedImageVisibility={setEnlargedImageVisibility} />
         
-            <section className="top-container" /* style={{minHeight:`${dataMovie.backdrop_path===null?'500px':'200px'}`}} */>
-                {/* el siguiente codigo es para simple imagen */}
-                {/* <img className="backdrop-image" 
-                    alt={dataMovie.original_title} 
-                    title={dataMovie.original_title}
-                    src={`${urlImg}${dataMovie.backdrop_path}`}
-                    onClick={()=>enlargedImageVisibility==='flex'
-                                    ?setEnlargedImageVisibility('none')
-                                    :setEnlargedImageVisibility('flex')}
-                    onMouseDown={()=>setEnlargedImageOrigin(`${urlImg}${dataMovie.backdrop_path}`)} /> */}
-                    
+            <section className="top-container">
                 {dataMovie.backdrop_path!==null
                     ?<BackdropImagesSlider 
                                             imagesData={dataImagesPerMovie} 
@@ -222,10 +168,7 @@ export default function DetailsMovie() {
             {dataMovie.poster_path!==null &&
             <aside className="sticky-sidebar" 
                 ref={stickySidebar}
-                /* style={{top:`${dataMovie.backdrop_path===null && 'initial'}`}} */
-                /* style={{top: `${document.querySelector('.top-container')}`}} */
             >
-
                 <ImageLoader 
                     src={`${urlImg}${dataMovie.poster_path}`}
                     alt={dataMovie.original_title}
@@ -521,7 +464,6 @@ export default function DetailsMovie() {
                     }
                 </article>
             </section> 
-            
         </div>
         }        
         </>

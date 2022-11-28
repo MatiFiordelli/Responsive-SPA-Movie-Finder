@@ -47,6 +47,14 @@ export default function Image({src, alt, title, className, onClick, onMouseDown}
                         :setLoading(true)
     },[percentage])
 
+    useEffect(()=>{
+        return ()=>{
+            setImgUrl('')
+            setPercentage('')
+            setLoading('')
+        }
+    },[])
+
     const onLoadImg = (e)=> {
         setLoading(false)
     }

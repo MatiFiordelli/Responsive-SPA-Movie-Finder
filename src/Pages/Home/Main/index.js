@@ -3,10 +3,11 @@ import axios from 'axios'
 import HorizontalSlider from '../../../Components/Slider/HorizontalSlider'
 import { LanguageContext } from '../../../GlobalState/context'
 import TitlesTranslator from '../../../Components/TitlesTranslator'
+import { fetchData } from '../../../Modules/FetchData/fetchData.js'
 
 export default function Main(){
     const signal = axios.CancelToken.source()
-    const apiKey = '4d1a073d6e646d93ce0400ffa3b8d13e'
+    /* const apiKey = '4d1a073d6e646d93ce0400ffa3b8d13e' */
     const { languageCodeState } = useContext(LanguageContext)
     const previousLanguage = useRef()
     const idxImg = useRef()
@@ -20,36 +21,16 @@ export default function Main(){
     const [discover, setDiscover] = useState()
     const [trending, setTrending] = useState()
     const urlImg = 'https://image.tmdb.org/t/p/original/'
-    const urlArray = [
-        `https://api.themoviedb.org/3/movie/latest?api_key=${apiKey}&language=${languageCodeState}&include_adult=false`,
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=${languageCodeState}&page=1&include_adult=false&region=AR`,
-        `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=${languageCodeState}&page=1&include_adult=false&region=BR`,
-        `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=${languageCodeState}&page=1&include_adult=false&region=US`,
-        `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=${languageCodeState}&page=1&include_adult=false&region=US`,
-        `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=${languageCodeState}&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&region=US`,
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&language=${languageCodeState}&include_adult=false`
-    ]
-
-    const fetchData = (url, setState) => {
-        axios.get(url, {cancelToken: signal.token})
-        .then((res)=>{
-            setState(res.data)
-        })
-        .catch((e)=>{
-            if(axios.isCancel(e)){
-                console.log(e.message)
-            }
-        })
-    }
 
     const contentUseEffect = () => {
-        fetchData(urlArray[0], setLatest)
-        fetchData(urlArray[1], setNowPlaying)
-        fetchData(urlArray[2], setPopular)
-        fetchData(urlArray[3], setTopRated)
-        fetchData(urlArray[4], setUpcoming)
-        fetchData(urlArray[5], setDiscover)
-        fetchData(urlArray[6], setTrending)
+        //urlId, setState, signal, languageCodeState, paramsId(movieID or personID)
+        fetchData(0, setLatest, signal, languageCodeState, null)
+        fetchData(1, setNowPlaying, signal, languageCodeState, null)
+        fetchData(2, setPopular, signal, languageCodeState, null)
+        fetchData(3, setTopRated, signal, languageCodeState, null)
+        fetchData(4, setUpcoming, signal, languageCodeState, null)
+        fetchData(5, setDiscover, signal, languageCodeState, null)
+        fetchData(6, setTrending, signal, languageCodeState, null)
     }
 
     useEffect(()=>{
@@ -117,7 +98,7 @@ export default function Main(){
         let currentScrollPos = window.scrollY
         let distancePixels
         let el = document.querySelector('.main-container__latest')
-
+console.log(el)
         //Controls if the scrollY is up or down
 		if(prevScrollPos < currentScrollPos){
             //scrolling down

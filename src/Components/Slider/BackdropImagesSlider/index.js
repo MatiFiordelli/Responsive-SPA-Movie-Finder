@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { slideBackdrop, detectClickVsDrag, sliderMouseDown } from '../../../UsefulFunctions/usefulFunctions.js'
+import { slideBackdrop, detectClickVsDrag, sliderMouseDown } from '../../../Modules/usefulFunctions.js'
 import EnlargeImage from '../../EnlargeImage/index.js'
 
 export default function BackdropImagesSlider({imagesData, parallax, origin, title}){

@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import {asideVerticalMovement, 
-        /* findBackdropImageNotNull, */
-        calcAge } from '../../UsefulFunctions/usefulFunctions.js'
+        calcAge } from '../../Modules/usefulFunctions.js'
+import { fetchData } from '../../Modules/FetchData/fetchData.js'
 import HorizontalSlider from '../../Components/Slider/HorizontalSlider'
 import EnlargeImage from '../../Components/EnlargeImage'
 import BackdropImagesSlider from '../../Components/Slider/BackdropImagesSlider'
@@ -20,8 +20,6 @@ export default function PersonProfile(){
     const [age, setAge] = useState()
     const [enlargedImageOrigin, setEnlargedImageOrigin] = useState()
     const [enlargedImageVisibility, setEnlargedImageVisibility] = useState('none')
-    //const [backdropPath, setBackdropPath] = useState()
-    //const [title, setTitle] = useState()
     const urlImg = "https://image.tmdb.org/t/p/w1280/"
 
     const optionsDate = {
@@ -30,34 +28,9 @@ export default function PersonProfile(){
                         day:'2-digit'
                         }
 
-    const fetchPersons = () => {
-        let url = `https://api.themoviedb.org/3/person/${params.id}?api_key=4d1a073d6e646d93ce0400ffa3b8d13e&language=${languageCodeState}&include_adult=false`
-        axios.get(url, {cancelToken: signal.token})
-        .then((res)=>{
-            setDataPerson(res.data)
-        })
-        .catch((e)=>{
-            if(axios.isCancel(e)){
-                console.log(e.message)
-            }
-        })
-    }
-
-    const fetchMoviesPerPerson = () => {
-        let url =   `https://api.themoviedb.org/3/person/${params.id}/movie_credits?api_key=4d1a073d6e646d93ce0400ffa3b8d13e&language=${languageCodeState}&include_adult=false`
-        axios.get(url, {cancelToken: signal.token})
-        .then((res)=>{
-            setDataMoviePerPerson(res.data)
-        })
-        .catch((e)=>{
-            if(axios.isCancel(e)){
-                console.log(e.message)
-            }
-        })
-    }
-
     useEffect(()=>{
-        fetchPersons()
+        //urlId, setState, signal, languageCodeState, paramsId(movieID or personID)
+        fetchData(10, setDataPerson, signal, languageCodeState, params.id)
 
         return ()=> {
             signal.cancel('Operation canceled by the user')
@@ -67,19 +40,9 @@ export default function PersonProfile(){
     },[languageCodeState])
 
     useEffect(()=>{
-        dataPerson === undefined && fetchPersons()
-
-        return ()=> {
-            signal.cancel('Operation canceled by the user')
-        }
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps 
-    },[])
-
-    useEffect(()=>{
         if(dataPerson !== undefined){
             calcAge(dataPerson.birthday, dataPerson.deathday, setAge)
-            fetchMoviesPerPerson()
+            fetchData(11, setDataMoviePerPerson, signal, languageCodeState, params.id)
         }
 
         return ()=>{
@@ -87,6 +50,16 @@ export default function PersonProfile(){
         }
 
     },[dataPerson])
+
+    useEffect(()=>{
+        dataPerson === undefined && fetchData(10, setDataPerson, signal, languageCodeState, params.id)
+
+        return ()=> {
+            signal.cancel('Operation canceled by the user')
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
+    },[])
 
     //Makes sidebar sticky on scroll
     const [sidebarInitialY, setSideBarInitialY] = useState()
@@ -101,22 +74,6 @@ export default function PersonProfile(){
                             setSideBarInitialY)
     }
 
-
-
-/*     const setBackdropTitleState = () => {
-        setBackdropPath(findBackdropImageNotNull(dataMoviePerPerson, 'backdrop_path'))
-        setTitle(findBackdropImageNotNull(dataMoviePerPerson,'title'))
-    }
-
-    useEffect(()=>{
-        if(dataMoviePerPerson!==undefined){
-            setBackdropTitleState()  
-        }
-        if(backdropPath===undefined){
-
-        }
-    },[dataMoviePerPerson]) */
-
     return(
         <>
         {dataPerson!==undefined && 
@@ -126,7 +83,7 @@ export default function PersonProfile(){
                         enlargedImageVisibility={enlargedImageVisibility}
                         setEnlargedImageVisibility={setEnlargedImageVisibility}/>
 
-            <section className="top-container" /* style={{minHeight:`${backdropPath===undefined?'500px':'200px'}`}} */>
+            <section className="top-container">
             
                 {dataMoviePerPerson !== undefined
                     ?<BackdropImagesSlider 
@@ -135,16 +92,6 @@ export default function PersonProfile(){
                                         origin={params.persongroup}
                     />
                     :<div className="backdrop-image" />
-                    
-                    
-                    /* <img className="backdrop-image" 
-                        alt={`${title.title}`}
-                        title={`${title.title}`}
-                        src={`${urlImg}${backdropPath.backdrop_path}`}
-                        onClick={()=>enlargedImageVisibility==='flex'
-                                        ?setEnlargedImageVisibility('none')
-                                        :setEnlargedImageVisibility('flex')}
-                        onMouseDown={()=>setEnlargedImageOrigin(`${urlImg}${backdropPath.backdrop_path}`)}/> */
                 }
 
                 <div className="summary-bar">
@@ -155,8 +102,7 @@ export default function PersonProfile(){
             {dataMoviePerPerson!==undefined && dataPerson.profile_path!==null &&
             <aside className="sticky-sidebar" 
                 ref={stickySidebar}
-                /* style={{top:`${(backdropPath === undefined || Object.keys(backdropPath).length === 0) && 'initial'}`}}*/> 
-
+            > 
                 <ImageLoader 
                     src={`${urlImg}${dataPerson.profile_path}`}
                     alt={dataPerson.name}
