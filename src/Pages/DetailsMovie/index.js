@@ -191,7 +191,7 @@ export default function DetailsMovie() {
                             <TitlesTranslator title={"OVERVIEW"} language={languageCodeState} uppercase />
                         </a>
                     </p>}
-                    {dataMovieCredits.cast.length!==0 &&
+                    {dataMovieCredits.cast.length!==0 && dataMovieCredits.cast !== undefined &&
                     <p>
                         <a onClick={()=>{document.querySelector('#cast').scrollIntoView()}}>
                             <TitlesTranslator title={"CAST"} language={languageCodeState} uppercase />

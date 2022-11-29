@@ -50,6 +50,7 @@
             overflow: hidden;
             padding:10px 20px;
             perspective: 50vw;
+            pointer-events: none;
             position: absolute;
             width:70%;
             animation: animateSummaryBar 700ms ease-in forwards ;
