@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import SvgHomeButton from '../../Svgs/SvgHomeButton'
 
 export default function HomeButton() {
     const navigate = useNavigate()
@@ -10,9 +11,7 @@ export default function HomeButton() {
                 className="home-button-container__button" 
                 onClick={()=>navigate('/')}
             >
-                <svg viewBox="0 0 24 24" id="svg-home">
-                    <path d="M3 10v11h6v-7h6v7h6v-11L12,3z"/>
-                </svg>
+                <SvgHomeButton />
             </span> 
         </div>
     )
