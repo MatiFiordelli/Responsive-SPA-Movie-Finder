@@ -62,6 +62,10 @@ export const detectClickVsDrag = (e, coordinates) => {
 }
 
 export const slide = (sliderContainer, slider, id) => {
+    console.log(window.getComputedStyle(sliderContainer).width)
+    console.log(window.getComputedStyle(slider).width)
+    console.log('--')
+
     let moveFlag = false
     let currentX = 0
     let initialPos
@@ -230,7 +234,6 @@ export const slideBackdrop = (sliderContainer, slider, parallax, setPositionInde
     slider.addEventListener("touchstart", dragStart)
     slider.addEventListener("touchend", dragEnd)
     slider.addEventListener("touchmove", drag)
-   // slider.addEventListener("click", ()=>{})
 /*     window.screen.orientation.addEventListener("change", ()=>{
         sliderItemWidth = window.getComputedStyle(slider.children[0]).width.replace('px','')
         slider.style.transform = "translateX(" + (-window.screen.width*index) + "px)"

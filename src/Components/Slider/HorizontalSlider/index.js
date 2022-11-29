@@ -15,7 +15,7 @@ export default function HorizontalSlider({ id, data, target }){
 
         slide(sliderContainer, slider)
 
-    },[])
+    },[document.querySelector('slider-inner')])
 
     return(
         <div className="slider-container" id={`sc${id}`}>
