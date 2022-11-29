@@ -62,10 +62,6 @@ export const detectClickVsDrag = (e, coordinates) => {
 }
 
 export const slide = (sliderContainer, slider, id) => {
-    console.log(window.getComputedStyle(sliderContainer).width)
-    console.log(window.getComputedStyle(slider).width)
-    console.log('--')
-
     let moveFlag = false
     let currentX = 0
     let initialPos
@@ -88,9 +84,14 @@ export const slide = (sliderContainer, slider, id) => {
     }
 
     function dragStart(e) {
-        setInitialPos(e)
-        moveFlag = true
-        //e.type==='touchstart' && e.preventDefault()
+        const w1 = window.getComputedStyle(slider).width.replace('px','')
+        const w2 = window.getComputedStyle(sliderContainer).width.replace('px','')
+
+        if(Number(w1)>Number(w2)){
+            setInitialPos(e)
+            moveFlag = true
+            'netscape' in window && e.preventDefault()
+        }
     } 
 
     function dragEnd(e) {
