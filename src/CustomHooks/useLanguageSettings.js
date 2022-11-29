@@ -10,7 +10,7 @@ export default function useLanguageSettings() {
     ]
 
     const currentIndex = arrayFlags.findIndex((e)=>{ 
-        return(Object.keys(e).toString()===languageCodeState.toString()) 
+        return(Object.keys(e).toString()===languageCodeState.split(',')[0]) 
     })
                                 
     
