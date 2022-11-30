@@ -14,6 +14,16 @@
 		transition: 700ms;
 		width: 100%;
         height: 100%;
+        animation: animateSearchBarInput 2000ms ease-in forwards
+    }
+
+    @keyframes animateSearchBarInput {
+        from{
+            opacity: 0.9;
+        }
+        to{
+            opacity: 0;
+        }
     }
 
     .search-bar__clear{

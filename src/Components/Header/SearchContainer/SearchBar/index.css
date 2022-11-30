@@ -16,6 +16,24 @@
   transition: 700ms;
   width: 100%;
   height: 100%;
+  -webkit-animation: animateSearchBarInput 2000ms ease-in forwards;
+          animation: animateSearchBarInput 2000ms ease-in forwards;
+}
+@-webkit-keyframes animateSearchBarInput {
+  from {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes animateSearchBarInput {
+  from {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 0;
+  }
 }
 .search-bar .search-bar__clear {
   color: rgba(0, 0, 0, 0.5);
