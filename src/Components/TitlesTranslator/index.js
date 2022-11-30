@@ -52,6 +52,9 @@ export default function TitlesTranslator({title, language, uppercase}) {
         ['Conodido por', 'Conhecido por', 'Known For'],
         ['Femenino', 'Feminino', 'Female'],
         ['Masculino', 'Masculino', 'Male'],
+
+        //BackdropImagesSlider.js
+        ['Arrastre', 'Arraste', 'Drag'],
     ]
 
     const getLanguageArrayPosition = () => {

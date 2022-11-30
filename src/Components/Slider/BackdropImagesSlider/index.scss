@@ -3,6 +3,39 @@
     overflow: hidden;
     padding:0;
 
+    .backdrop-image-slider-dragIndicator{
+        align-items: center;
+        color:#FFF;
+        display: flex;
+        flex-direction: column;
+        font-weight: 500;
+        justify-content: center;
+        pointer-events: none;
+        position: absolute;
+        top:50%;
+        z-index: 110;
+        animation: animateLeftArrow 1500ms ease infinite ;
+
+        @keyframes animateLeftArrow{
+            from {
+                color:transparent;
+                right: 16px;
+                //text-shadow: 0 0 20px #ff4da6, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+            to{
+                right: 25px;
+                text-shadow: 0 0 10px #e60073, 0 0 20px #e60073, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;                
+            }
+        }
+
+        .backdrop-image-slider-dragIndicator__arrow{    
+            font-size: 1rem;
+        }
+        .backdrop-image-slider-dragIndicator__text{
+            font-size: 0.6rem;
+        }
+    }
+
     .backdrop-image-slider-navigation{
         display:grid;
         grid-auto-flow: column;
@@ -79,6 +112,19 @@
                 } @else {
                     display:none;
                 };
+            }
+
+            .backdrop-image-slider-dragIndicator{
+                .backdrop-image-slider-dragIndicator__arrow{    
+                    @if $minWidth==801px{
+                        font-size: 2rem;
+                    }
+                }
+                .backdrop-image-slider-dragIndicator__text{
+                    @if $minWidth==801px{
+                        font-size: 1rem;
+                    }
+                }
             }
 
             .backdrop-image-slider{

@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import { slideBackdrop, detectClickVsDrag, sliderMouseDown } from '../../../Modules/usefulFunctions.js'
-import EnlargeImage from '../../EnlargeImage/index.js'
+import EnlargeImage from '../../EnlargeImage'
+import TitlesTranslator from '../../TitlesTranslator/index.js'
+import { LanguageContext } from '../../../GlobalState/context.js'
 
 export default function BackdropImagesSlider({imagesData, parallax, origin, title}){
     const [enlargedImageOrigin, setEnlargedImageOrigin] = useState()
@@ -8,6 +10,8 @@ export default function BackdropImagesSlider({imagesData, parallax, origin, titl
     const [clickVsTouchCoordinates, setClickVsTouchCoordinates] = useState([])
     const [imagesDataOrigin, setImagesDataOrigin] = useState()
     const [positionIndexState, setPositionIndexState] = useState(0)
+    const { languageCodeState, setLanguageCodeState } = useContext(LanguageContext)
+    const dragIndicatorRef=useRef()
     const urlImg = 'https://image.tmdb.org/t/p/original'
 
     const enlargedImageVisibilityFcn = (ev, e) => {
@@ -72,6 +76,14 @@ export default function BackdropImagesSlider({imagesData, parallax, origin, titl
                 setEnlargedImageVisibility={setEnlargedImageVisibility} />
                             
             <div className="backdrop-image-slider-container" id="bdisc">
+                <div 
+                    className="backdrop-image-slider-dragIndicator"
+                    ref={dragIndicatorRef}
+                >
+                    <span className="backdrop-image-slider-dragIndicator__arrow">&#8678;</span>
+                    <span className="backdrop-image-slider-dragIndicator__text"><TitlesTranslator title={'drag'} language={languageCodeState} uppercase={false}/></span>
+                </div>
+
                 <nav className="backdrop-image-slider-navigation">
                         
                     {imagesDataOrigin!==undefined &&
@@ -85,7 +97,12 @@ export default function BackdropImagesSlider({imagesData, parallax, origin, titl
                         })
                     }
                 </nav>
-                <div className="backdrop-image-slider" id ="bdis">
+                <div 
+                    className="backdrop-image-slider" 
+                    id="bdis" 
+                    onClick={()=>{dragIndicatorRef.current.style.visibility="hidden"}}
+                    onTouchEnd={()=>{dragIndicatorRef.current.style.visibility="hidden"}}
+                >
                     {imagesDataOrigin!==undefined &&
                         imagesDataOrigin.map((e,i,array)=>( 
                             getPath(e)!==null && i<=100 &&
