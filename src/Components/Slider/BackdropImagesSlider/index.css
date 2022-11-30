@@ -41,7 +41,7 @@
   font-size: 1rem;
 }
 .backdrop-image-slider-container .backdrop-image-slider-dragIndicator .backdrop-image-slider-dragIndicator__text {
-  font-size: 0.6rem;
+  font-size: 0.5rem;
 }
 .backdrop-image-slider-container .backdrop-image-slider-navigation {
   display: grid;
@@ -108,10 +108,10 @@
     display: grid;
   }
   .backdrop-image-slider-container .backdrop-image-slider-dragIndicator .backdrop-image-slider-dragIndicator__arrow {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
   .backdrop-image-slider-container .backdrop-image-slider-dragIndicator .backdrop-image-slider-dragIndicator__text {
-    font-size: 1rem;
+    font-size: 0.7rem;
   }
   .backdrop-image-slider-container .backdrop-image-slider .backdrop-image-slider-item {
     height: 500px;
