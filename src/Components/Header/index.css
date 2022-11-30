@@ -34,11 +34,6 @@
           animation-duration: 0ms;
 }
 
-.header:hover .search-bar__input {
-  -webkit-animation: autoShowSearchInput 1000ms;
-          animation: autoShowSearchInput 1000ms;
-}
-
 @-webkit-keyframes autoHideHeader {
   from {
     opacity: 1;
@@ -54,21 +49,5 @@
   }
   to {
     opacity: 0.2;
-  }
-}
-@-webkit-keyframes autoShowSearchInput {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.9;
-  }
-}
-@keyframes autoShowSearchInput {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.9;
   }
 }/*# sourceMappingURL=index.css.map */

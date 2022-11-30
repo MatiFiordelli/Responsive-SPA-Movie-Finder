@@ -31,24 +31,11 @@
     animation-duration: 0ms;
 }
 
-.header:hover .search-bar__input{
-    animation: autoShowSearchInput 1000ms;
-}
-
 @keyframes autoHideHeader {
     from{
         opacity: 1;
     }
     to{
         opacity:0.2;
-    }
-}
-
-@keyframes autoShowSearchInput {
-    from{
-        opacity:0;
-    }
-    to{
-        opacity:0.9;
     }
 }

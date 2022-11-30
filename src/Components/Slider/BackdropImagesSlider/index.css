@@ -47,7 +47,7 @@
   display: grid;
   grid-auto-flow: column;
   justify-content: center;
-  opacity: 1;
+  opacity: 0.4;
   overflow: hidden;
   position: relative;
   top: 10px;
