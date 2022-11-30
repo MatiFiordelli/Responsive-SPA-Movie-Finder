@@ -24,7 +24,7 @@ export default function HorizontalSliderContent({e, target, id}){
                     title: e.title,
                     subtitle1: e.character,
                     subtitle2: e.release_date!==undefined && e.release_date.slice(0,4),
-                    svg: <SvgMovieNotFound classNameProp='img-person-not-found'/>
+                    svg: <SvgMovieNotFound classNameProp='tv-movie-img-not-found'/>
                 }
             )
         }

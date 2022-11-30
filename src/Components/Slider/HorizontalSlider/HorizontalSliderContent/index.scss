@@ -1,4 +1,4 @@
-@use "../../Styles/Modules/modules";
+@use "../../../../Styles/Modules/modules";
 
 .slider-inner__item-image{
     text-align: center;
@@ -27,32 +27,40 @@
     font-weight: 600;
 }
 
-.img-person-not-found{
+.img-person-not-found,
+.tv-movie-img-not-found{
     @include modules.size(200px, 300px);
     background-color: lightslategrey;
 }
 
 @media only screen and (min-width:1501px){
-    .slider-inner__item-image, .img-person-not-found{
+    .slider-inner__item-image,
+    .img-person-not-found,
+    .tv-movie-img-not-found{
         @include modules.size(200px, 300px);
-        background-color: red;
     }
 }
 
 @media only screen and (max-width:1500px){
-    .slider-inner__item-image, .img-person-not-found{
+    .slider-inner__item-image,
+    .img-person-not-found,
+    .tv-movie-img-not-found{
         @include modules.size(130px, 195px);
     }
 }
 
 @media only screen and (max-width:800px){
-    .slider-inner__item-image, .img-person-not-found{
+    .slider-inner__item-image,
+    .img-person-not-found,
+    .tv-movie-img-not-found{
         @include modules.size(100px, 150px);
     }
 }
 
 @media only screen and (max-width:500px){
-    .slider-inner__item-image, .img-person-not-found{
+    .slider-inner__item-image,
+    .img-person-not-found,
+    .tv-movie-img-not-found{
         @include modules.size(85px, 127.5px)
     }
 }

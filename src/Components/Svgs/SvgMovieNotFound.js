@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function SvgMovieNotFound({classNameProp}){
     //"img-person-not-found"
-    //"tv-movie-img-not-found"
+    //"tv-movie-img-not-found-in-search"
 
     return(
         <svg xmlns="http://www.w3.org/2000/svg" className={classNameProp} viewBox="0 0 32 32">

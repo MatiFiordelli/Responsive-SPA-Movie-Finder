@@ -31,7 +31,7 @@ export default function SearchResultsList() {
 			info.push(
 				(<div className="search-result-item" key={searchResultItem.length+i} onClick={()=>{}}>
 					{url_path===""
-								?<SvgMovieNotFound classNameProp='tv-movie-img-not-found'/>
+								?<SvgMovieNotFound classNameProp='tv-movie-img-not-found-in-search'/>
 								:<img 
 									src={url_path} 
 									className="search-result-item__poster" 

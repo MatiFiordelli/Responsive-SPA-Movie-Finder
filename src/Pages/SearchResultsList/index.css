@@ -35,7 +35,7 @@
   text-align: center;
   transition: 400ms;
 }
-.search-results .search-result-item .tv-movie-img-not-found {
+.search-results .search-result-item .tv-movie-img-not-found-in-search {
   width: 100%;
   height: 100%;
   background-color: lightslategray;
