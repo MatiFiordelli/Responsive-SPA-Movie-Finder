@@ -7,12 +7,12 @@ export default function SearchButton({searchButtonStatus, setSearchButtonStatus}
         setSearchButtonStatus(()=>!searchButtonStatus)
     }
 
-    useEffect(()=>{
+/*     useEffect(()=>{
         const sb=document.querySelector('.search-button')
         !searchButtonStatus
             ?sb.style.backgroundColor='#000'
-            :sb.style.backgroundColor='#000' //#F00
-    },[searchButtonStatus])
+            :sb.style.backgroundColor='#F00'
+    },[searchButtonStatus]) */
 
     return(
         <div 

@@ -5,24 +5,6 @@
     align-items: center;
     display: flex;
     justify-content: center;
-
-    .home-button-container__button{
-
-        .svg-home{
-            fill: #FFF;
-            transition: 500ms ease;
-            width: 15px;
-            height: 15px;
-        }
-    }
-
-    .svg-home:hover{
-        fill: rgb(230, 182, 60);
-    }
-
-    .svg-home:active{
-        fill:rgba(255,255,255,0.6);
-    }
 }
 
 .home-button-container:hover{

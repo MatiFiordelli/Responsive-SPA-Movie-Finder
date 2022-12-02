@@ -11,33 +11,7 @@
     left:0;
     transition: 1000ms;
     width:30px;
-}
-
-.magnifying-glass{
-    cursor: pointer;
-    fill:#FFF;
-    width: 100%;
-    height: 50%;
-}
-
-.magnifying-glass:hover{
-    opacity: 0.9;
-}
-
-.magnifying-glass:active{
-    opacity: 0.8;
-}
-
-.svg-left-arrow-hide-search-input{
-    fill:#F00;
-}
-
-.svg-left-arrow-hide-search-input:hover{
-    opacity: 0.9;
-}
-
-.svg-left-arrow-hide-search-input:active{
-    opacity: 0.8;
+    height: inherit;
 }
 
 @media only screen and (max-width:600px){

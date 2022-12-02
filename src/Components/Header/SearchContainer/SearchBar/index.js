@@ -15,10 +15,12 @@ export default function SearchBar({searchButtonStatus, setSearchButtonStatus}){
         sessionStorage.getItem('searchTerm')==='' && 
             sessionStorage.getItem('isSearching')===false && 
                 navigate('/')
+
     },[])
 
     useEffect(()=>{
-        sessionStorage.setItem('searchTerm', searchTerm)        
+        sessionStorage.setItem('searchTerm', searchTerm)  
+
     },[searchTerm])
 
     useEffect(()=>{
@@ -26,6 +28,13 @@ export default function SearchBar({searchButtonStatus, setSearchButtonStatus}){
             setSearchButtonStatus(false)
         
     },[location])
+
+    useEffect(()=>{
+        searchButtonStatus
+            ?searchBarInput.current.focus()
+            :searchBarInput.current.blur()
+            
+    },[searchButtonStatus])
 
     const setSearchEvent = () => {
         searchBarInput.current.blur()

@@ -13,18 +13,6 @@
   display: flex;
   justify-content: center;
 }
-.home-button-container .home-button-container__button .svg-home {
-  fill: #FFF;
-  transition: 500ms ease;
-  width: 15px;
-  height: 15px;
-}
-.home-button-container .svg-home:hover {
-  fill: rgb(230, 182, 60);
-}
-.home-button-container .svg-home:active {
-  fill: rgba(255, 255, 255, 0.6);
-}
 
 .home-button-container:hover {
   border: 1px solid rgba(255, 255, 255, 0.6);

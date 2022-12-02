@@ -75,8 +75,8 @@ export default function BackdropImagesSlider({imagesData, parallax, origin, titl
             })
             
             el[positionIndexState].style.backgroundColor = '#F00'
-            
         }
+        
     },[positionIndexState])
 
     return(
