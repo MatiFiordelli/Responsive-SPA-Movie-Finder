@@ -33,6 +33,7 @@
 .search-bar .search-bar__magnifying-glass-container {
   align-items: center;
   display: flex;
+  position: relative;
   width: 15px;
   height: 100%;
 }
