@@ -1,24 +1,28 @@
-import React, {useContext} from 'react'
-import { useNavigate } from 'react-router-dom'
-import { SearchTermContext } from '../../../../GlobalState/context.js'
-import SvgSearchButton from '../../../Svgs/SvgSearchButton.js'
+import React, { useEffect} from 'react'
+import SvgSearchButton from '../../../Svgs/SvgSearchButton'
+import SvgLeftArrowHideSearchInput from '../../../Svgs/SvgLeftArrowHideSearchInput'
 
-export default function SearchButton(){
-    const navigate = useNavigate()
-    const {searchTerm, setSearchTerm} = useContext(SearchTermContext)
-
-    const setSearchEvent = (e) => {
-        const el = document.querySelector('.search-bar__input')
-        el.blur()
-        el.value !== '' && navigate(`/search/${searchTerm}`)
+export default function SearchButton({searchButtonStatus, setSearchButtonStatus}){
+    const exchangeButton = () => {
+        setSearchButtonStatus(()=>!searchButtonStatus)
     }
+
+    useEffect(()=>{
+        const sb=document.querySelector('.search-button')
+        !searchButtonStatus
+            ?sb.style.backgroundColor='#000'
+            :sb.style.backgroundColor='#F00'
+    },[searchButtonStatus])
 
     return(
         <div 
             className="search-button"
-            onClick={(e)=>setSearchEvent(e)}
+            onClick={(e)=>exchangeButton(e)}
         >
-            <SvgSearchButton />
+        {searchButtonStatus
+            ?<SvgLeftArrowHideSearchInput />
+            :<SvgSearchButton />
+        }
         </div>
     )
 }

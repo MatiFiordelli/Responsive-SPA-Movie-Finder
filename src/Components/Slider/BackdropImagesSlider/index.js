@@ -47,6 +47,11 @@ export default function BackdropImagesSlider({imagesData, parallax, origin, titl
             origin==="cast" && setImagesDataOrigin(imagesData.cast)
             origin==="crew" && setImagesDataOrigin(imagesData.crew)
             origin==="movie" && setImagesDataOrigin(imagesData.backdrops)
+            
+            const slider = document.querySelector('#bdis')
+            slider.children.length<2 
+                ?dragIndicatorRef.current.style.display='none'
+                :dragIndicatorRef.current.style.display='flex'
         }
     },[imagesData])
 

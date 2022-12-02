@@ -8,7 +8,7 @@
 
     .home-button-container__button{
 
-        #svg-home{
+        .svg-home{
             fill: #FFF;
             transition: 500ms ease;
             width: 15px;
@@ -16,11 +16,11 @@
         }
     }
 
-    #svg-home:hover{
+    .svg-home:hover{
         fill: rgb(230, 182, 60);
     }
 
-    #svg-home:active{
+    .svg-home:active{
         fill:rgba(255,255,255,0.6);
     }
 }

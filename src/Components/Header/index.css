@@ -50,4 +50,9 @@
   to {
     opacity: 0.2;
   }
+}
+@media only screen and (max-width: 400px) {
+  .header .header__right-section {
+    padding: 0;
+  }
 }/*# sourceMappingURL=index.css.map */

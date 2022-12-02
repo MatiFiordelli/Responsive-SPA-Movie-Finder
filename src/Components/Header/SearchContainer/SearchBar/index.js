@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { SearchTermContext } from '../../../../GlobalState/context.js'
+import { SearchTermContext } from '../../../../GlobalState/context'
+import SvgSearchButton from '../../../Svgs/SvgSearchButton'
 
-export default function SearchBar(){
-    const searchBar = useRef('')
+export default function SearchBar({searchButtonStatus, setSearchButtonStatus}){
+    const location = useLocation()
+    const searchBarInput = useRef('')
     const navigate = useNavigate()
     const {searchTerm, setSearchTerm} = useContext(SearchTermContext)
-const params = useParams()
+    
     useEffect(()=>{
         setSearchTerm(sessionStorage.getItem('searchTerm')/* .replaceAll(/[<>.]/g,'') */)
         sessionStorage.getItem('searchTerm')==='' && 
@@ -19,23 +21,32 @@ const params = useParams()
         sessionStorage.setItem('searchTerm', searchTerm)        
     },[searchTerm])
 
-    const setSearchEvent = (e) => {
-        e.target.blur()
-        e.target.value !== '' && navigate(`/search/${e.target.value}`)
+    useEffect(()=>{
+        location.pathname.split('/')[1] !== 'search' &&
+            setSearchButtonStatus(false)
+        
+    },[location])
+
+    const setSearchEvent = () => {
+        searchBarInput.current.blur()
+        searchBarInput.current.value !== '' && navigate(`/search/${searchBarInput.current.value}`)
     }
 
     const clearSearchBarInput = () => {
         setSearchTerm('')
         sessionStorage.setItem('searchTerm','')
-        searchBar.current.focus()
+        searchBarInput.current.focus()
     }
 
     return(
-        <div className="search-bar">
+        <div 
+            className="search-bar" 
+            style={{width: searchButtonStatus?'100%':'0'}}
+        >
             <input 
                 type="text" 
                 className="search-bar__input"
-                ref={searchBar}
+                ref={searchBarInput}
                 value={searchTerm}
                 onChange={(e)=>{setSearchTerm(e.target.value)}} 
                 placeholder="Write the name of a Movie" 
@@ -47,6 +58,12 @@ const params = useParams()
                 className="search-bar__clear" 
                 onClick={()=>clearSearchBarInput()}
             >×
+            </span>
+            <span 
+                className="search-bar__magnifying-glass-container"
+                onClick={(e)=>setSearchEvent(e)}
+            >
+                <SvgSearchButton />
             </span>
         </div>
     )

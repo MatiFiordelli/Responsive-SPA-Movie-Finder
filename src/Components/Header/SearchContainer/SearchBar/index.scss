@@ -5,22 +5,23 @@
     margin-left: 1px;
     overflow: hidden;
     position: relative;
-	transition: top 1000ms;
-	width: 40vw;
+	transition: 500ms;
+	width: 100%;
     height: stretch;
     
     .search-bar__input{
+        margin-right:2px;
         opacity: 0.9;
 		transition: 700ms;
-		width: 100%;
+		width: 33vw;
         height: 100%;
     }
 
     .search-bar__clear{
-        color:rgba(0,0,0,0.5);
+        color:rgba(255,0,0,0.5);
         cursor:pointer;
         position: absolute;
-        right: 5px;
+        right: 23px;
     }
 
     .search-bar__clear:hover{
@@ -29,6 +30,13 @@
 
     .search-bar__clear:active{
         font-weight: 700;
+    }
+
+    .search-bar__magnifying-glass-container{
+        align-items: center;
+        display: flex;
+        width: 15px;
+        height: 100%;
     }
 }
 
@@ -51,3 +59,9 @@
 @include searchBarInputPlaceholder(12px, 601px, 800px);
 @include searchBarInputPlaceholder(10px, 401px, 600px);
 @include searchBarInputPlaceholder(8px, 0px, 400px);
+
+@media only screen and (max-width:600px){
+    .search-bar{
+        width:0;
+    }
+}

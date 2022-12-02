@@ -1,6 +1,6 @@
 .search-button {
   align-items: center;
-  background-color: #F00;
+  background-color: #000;
   border-radius: 2px;
   cursor: pointer;
   display: grid;
@@ -9,6 +9,7 @@
   padding: 0;
   top: 0;
   left: 0;
+  transition: 1000ms;
   width: 30px;
   height: -webkit-fill-available;
   height: -moz-available;
@@ -16,11 +17,10 @@
 }
 
 .magnifying-glass {
-  display: block;
+  cursor: pointer;
   filter: invert(1);
-  margin: 0 auto;
-  width: 70%;
-  height: 70%;
+  width: auto;
+  height: 50%;
 }
 
 .magnifying-glass:hover {
@@ -29,4 +29,22 @@
 
 .magnifying-glass:active {
   filter: invert(0.8);
+}
+
+.svg-left-arrow-hide-search-input {
+  fill: #FFF;
+}
+
+.svg-left-arrow-hide-search-input:hover {
+  opacity: 0.9;
+}
+
+.svg-left-arrow-hide-search-input:active {
+  opacity: 0.8;
+}
+
+@media only screen and (max-width: 600px) {
+  .search-button {
+    background-color: #000;
+  }
 }/*# sourceMappingURL=index.css.map */
