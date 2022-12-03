@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React from 'react'
 import SvgSearchButton from '../../../Svgs/SvgSearchButton'
 import SvgLeftArrowHideSearchInput from '../../../Svgs/SvgLeftArrowHideSearchInput'
 

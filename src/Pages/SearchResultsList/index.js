@@ -89,8 +89,8 @@ export default function SearchResultsList() {
 		setSearchResultItem([])
 		page.current = 1
 		if(params.terms!==undefined){
-			searchPhrase = params.terms.replaceAll(' ', '+')
-			paramsId = {page: page.current, searchPhrase: searchPhrase}
+			searchPhrase = params.terms.replaceAll(' ', '+') // eslint-disable-line
+			paramsId = {page: page.current, searchPhrase: searchPhrase} // eslint-disable-line
 			fetchData(12, setData, signal, languageCodeState, paramsId)
 
 			document.querySelector('.search-results').style.display = 'flex'

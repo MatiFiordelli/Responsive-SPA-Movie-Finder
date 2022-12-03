@@ -49,6 +49,7 @@ export default function BackdropImagesSlider({imagesData, parallax, origin, titl
             origin==="movie" && setImagesDataOrigin(imagesData.backdrops)
         }
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     },[imagesData])
 
     useEffect(()=>{
@@ -64,6 +65,7 @@ export default function BackdropImagesSlider({imagesData, parallax, origin, titl
         let slider = document.querySelector('#bdis')
         slideBackdrop(sliderContainer, slider, parallax, setPositionIndexState)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     },[])
 
     useEffect(()=>{

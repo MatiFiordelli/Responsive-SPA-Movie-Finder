@@ -2,9 +2,7 @@
 
 .home-button-container{
     @extend %button-header;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+
 }
 
 .home-button-container:hover{

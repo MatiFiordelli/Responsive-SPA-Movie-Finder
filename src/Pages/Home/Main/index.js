@@ -43,6 +43,8 @@ export default function Main(){
             signal.cancel('Operation canceled by the user')
             window.onscroll = () => {}
         }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     },[])
     
     useEffect(()=>{
@@ -53,6 +55,8 @@ export default function Main(){
         return ()=>{
             signal.cancel('Operation canceled by the user')
         }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     },[languageCodeState])
 
     const randomMovie = () => {
@@ -68,6 +72,8 @@ export default function Main(){
 
     useEffect(()=>{
         randomMovie()
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     },[popular])
 
     useEffect(()=>{

@@ -1,11 +1,9 @@
-import React, { Fragment, useState, useEffect, useContext } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { sliderMouseDown, detectClickVsDrag, slide } from '../../../Modules/usefulFunctions.js'
 import HorizontalSliderContent from '../HorizontalSlider/HorizontalSliderContent'
-import { LanguageContext } from "../../../GlobalState/context.js"
 
 export default function HorizontalSlider({ id, data, target }){
-    const { languageCodeState } = useContext(LanguageContext)
     const navigate = useNavigate()
     const [clickVsTouchCoordinates, setClickVsTouchCoordinates] = useState([])
 
@@ -15,6 +13,7 @@ export default function HorizontalSlider({ id, data, target }){
 
         slide(sliderContainer, slider)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     },[document.querySelector('slider-inner')])
 
     return(

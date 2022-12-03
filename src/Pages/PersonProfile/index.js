@@ -48,7 +48,8 @@ export default function PersonProfile(){
         return ()=>{
             signal.cancel('Operation canceled by the user')
         }
-
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     },[dataPerson])
 
     useEffect(()=>{

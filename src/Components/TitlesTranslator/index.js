@@ -67,7 +67,7 @@ export default function TitlesTranslator({title, language, uppercase}) {
         const titlePascalCase = []
         title
             .split(' ')
-            .map((e)=>{
+            .forEach((e)=>{
                 //detect 2 letter word(must be lowercase otherwise PascalCase), and not at the begining of the sentence
                 if(e.length > 2){
                     titlePascalCase.push(e[0].toUpperCase() + e.slice(1, e.length).toLowerCase())
@@ -83,7 +83,7 @@ export default function TitlesTranslator({title, language, uppercase}) {
     }
 
     const getProperTitle = () => {
-        return titlesList.map((e)=>{
+        return titlesList.forEach((e)=>{
             if(e.includes(toPascalCase(title))){
                 setReturnedTitle(e[getLanguageArrayPosition()])
             }
@@ -92,11 +92,13 @@ export default function TitlesTranslator({title, language, uppercase}) {
 
     useEffect(()=>{
         getProperTitle()
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     },[language])
 
     useEffect(()=>{
         return ()=>{
-            titlesList=[]
+            titlesList=[]  // eslint-disable-line react-hooks/exhaustive-deps 
         }
     },[])
 

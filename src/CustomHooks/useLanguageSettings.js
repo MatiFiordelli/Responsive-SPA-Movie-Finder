@@ -26,6 +26,8 @@ export default function useLanguageSettings() {
 
     useEffect(() => {
         setLanguageCodeState(Object.keys(arrayFlags[idxLanguage]).toString())
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, [idxLanguage])
 
     useEffect(() => {

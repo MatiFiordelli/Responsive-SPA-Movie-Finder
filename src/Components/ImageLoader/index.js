@@ -39,6 +39,8 @@ export default function Image({src, alt, title, className, onClick, onMouseDown}
         return ()=>{
             signal.cancel('Operation cenceled by the user')
         }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     },[src])
 
     useEffect(()=>{

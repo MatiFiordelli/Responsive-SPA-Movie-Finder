@@ -28,6 +28,8 @@ export default function HorizontalSliderContent({e, target, id}){
                 }
             )
         }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps 
     },[e])
 
     useEffect(()=>{

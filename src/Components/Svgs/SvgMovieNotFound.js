@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function SvgMovieNotFound({classNameProp}){
     //"img-person-not-found"

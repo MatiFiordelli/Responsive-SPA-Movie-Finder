@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import SearchButton from './SearchButton'
 import SearchBar from './SearchBar'
 import { SearchTermContext } from '../../../GlobalState/context.js'

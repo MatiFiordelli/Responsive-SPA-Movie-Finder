@@ -32,10 +32,18 @@
 
 %button-header {
 	border: 1px solid rgba(255,255,255,0.2);
-	border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -khtml-border-radius: 50%;
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 1);
 	cursor:pointer;
+	display: grid;
+	justify-content: center;
+	align-items: center;
     margin: 0 12px;
-	padding: 0 3px;
+	overflow: hidden;
     transition: 300ms;
+	width:20px;
+	height:20px;
 }
