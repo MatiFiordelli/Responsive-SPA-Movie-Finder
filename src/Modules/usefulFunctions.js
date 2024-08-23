@@ -90,7 +90,8 @@ export const slide = (sliderContainer, slider, id) => {
         if(Number(w1)>Number(w2)){
             setInitialPos(e)
             moveFlag = true
-            'netscape' in window && e.preventDefault()
+            e.type!=='touchstart' && e.preventDefault()
+            //'netscape' in window && e.preventDefault()
         }
     } 
 

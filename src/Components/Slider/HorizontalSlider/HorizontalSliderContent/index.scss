@@ -1,6 +1,12 @@
 @use "../../../../Styles/Modules/modules";
 
+@mixin shadowRounded {
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px 0px rgb(43, 43, 43);
+}
+
 .slider-inner__item-image{
+    @include shadowRounded;
     text-align: center;
     width:-webkit-fill-available;
     width: 130px;
@@ -30,6 +36,7 @@
 .img-person-not-found,
 .tv-movie-img-not-found{
     @include modules.size(200px, 300px);
+    @include shadowRounded;
     background-color: lightslategrey;
 }
 

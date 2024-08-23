@@ -22,7 +22,7 @@
 
 body {
   /*background-color:rgb(67, 62, 73);*/
-  background-color: rgb(51, 47, 57);
+  background-image: linear-gradient(to bottom, #1A2B3C, #23344D, #283B5F, #2F446F, #345A7F);
   color: rgb(255, 255, 255);
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   margin: 0 auto;
